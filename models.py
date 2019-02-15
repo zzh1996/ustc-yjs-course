@@ -43,3 +43,9 @@ class Student:
 
     def __repr__(self):
         return 'Student(%s, %s)' % (repr(self.sno), repr(self.name))
+
+    def __eq__(self, other):
+        return self.sno == other.sno
+
+    def __hash__(self):
+        return hash((self.sno, self.name))

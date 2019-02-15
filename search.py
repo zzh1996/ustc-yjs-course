@@ -4,11 +4,19 @@ from models import Data
 
 
 def search(keyword):
+    students = set()
     for course in data.all_courses:
         for student in course.students:
             if student.name == keyword or student.sno == keyword:
-                print(course.cno, '%s/%s' % (course.selected, course.limit), course.name,
-                      course.detail_text, '\n')
+                students.add(student)
+
+    for s in students:
+        print('----------', s.sno, s.name, '----------')
+        for course in data.all_courses:
+            for student in course.students:
+                if student == s:
+                    print(course.cno, '%s/%s' % (course.selected, course.limit), course.name,
+                          course.detail_text, '\n')
 
 
 if __name__ == '__main__':
