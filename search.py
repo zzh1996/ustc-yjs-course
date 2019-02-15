@@ -12,11 +12,13 @@ def search(keyword):
 
     for s in students:
         print('----------', s.sno, s.name, '----------')
+        print()
         for course in data.all_courses:
             for student in course.students:
                 if student == s:
-                    print(course.cno, '%s/%s' % (course.selected, course.limit), course.name,
-                          course.detail_text, '\n')
+                    print(course.cno, '%s/%s' % (course.selected, course.limit), course.name)
+                    print(course.detail_text)
+                    print()
 
 
 if __name__ == '__main__':
