@@ -31,9 +31,9 @@ def get_students(code, term, classno):
 def get_courses(year, semester):
     print('Downloading course list')
     s.get('http://yjs.ustc.edu.cn/course/query.asp?mode=dept')
-    r = s.post('http://yjs.ustc.edu.cn/course/m_querybydept.asp',
+    r = s.post('http://yjs.ustc.edu.cn/course/m_querybyname.asp',
                data='year1=' + year + '&term1=' + semester +
-                    '&kkdept=+%CB%F9%D3%D0%D4%BA%CF%B5&submit=%B2%E9+%D1%AF',
+                    '&querykc=_&submit=%B2%E9+%D1%AF',
                headers={'Content-Type': 'application/x-www-form-urlencoded'})
     soup = BeautifulSoup(r.content, 'html5lib')
     courses = []
